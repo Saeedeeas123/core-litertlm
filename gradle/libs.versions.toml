@@ -1,0 +1,18 @@
+# Premade module project — :core:litertlm (reusable offline LiteRT-LM loader).
+#
+# Toolchain facts (verified on-device 2026-10-10):
+#   litertlm-android ships Java 21 bytecode (class file major 65) + Kotlin metadata 2.4.0.
+#   -> the build MUST run on JDK 21 (JAVA_HOME=/opt/jdk21), and the module is plain Java so
+#      that any consuming project works regardless of its own Kotlin version.
+#   AGP 8.5.2 + Gradle 8.7 are both present in the local Gradle cache.
+[versions]
+agp = "8.5.2"
+litertlm = "0.18.0"
+junit = "4.13.2"
+
+[libraries]
+litertlm-android = { group = "com.google.ai.edge.litertlm", name = "litertlm-android", version.ref = "litertlm" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+
+[plugins]
+android-library = { id = "com.android.library", version.ref = "agp" }
